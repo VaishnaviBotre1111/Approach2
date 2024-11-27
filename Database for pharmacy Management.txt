@@ -1,0 +1,7 @@
+Users Tables:-           Drugs Table:-            Orders:           OrderItems:-         Cart:-CartId(PK)        Suppliers:-          SalesReport:-
+UserId(PK)               DrugId (pk)              OrderId(PK)       OrderItemsId(PK)      UserId(fk)          SupplierId(PK)          SalesReportId(PK)
+UserName                 DrugName                 UserId(FK)        OrderId(FK)           DrugId(fk)          SupplierName            DrugId(FK)
+Email                    DrugDescription          DrugId(Fk)        DrugId(FK)            QuantityInCart      Contact                 SaleDate
+Password                 Price                    OrderQuantity     Quantity              Email               TotalAmount             TotalQuantitySold
+Contact                  ExpiryDate               OrderDate         ItemsPrice            Address
+UserType(Admin/Doctor)   QuntityInStock           OrderStatus

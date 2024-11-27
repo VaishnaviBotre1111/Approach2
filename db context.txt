@@ -1,0 +1,412 @@
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+        if(!optionsBuilder.IsConfigured){
+            optionsBuilder.UseSqlServer("Data Source=LIN-PF1QEPJN; Initial Catalog=ProjectPractice;Integrated Security=True;TrustServerCertificate=True");
+        }
+    }
+
+using Microsoft.EntityFrameworkCore;
+using Project.Models;
+
+if(!optionsBuilder.IsConfigured){
+            optionsBuilder.UseSqlServer("Data Source=LIN-PF1QEPJN; Initial Catalog=ProjectPractice;Integrated Security=True;TrustServerCertificate=True");
+        }
+
+"ConnectionStrings": {"Default" : "Data Source=LIN-PF1QEPJN; Initial Catalog=ProjectPractice;Integrated Security=True;TrustServerCertificate=True"}
+
+
+
+
+
+
+
+
+
+
+......................................
+
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
+public class BookingService
+{
+    private readonly YourDbContext _context;
+
+    public BookingService(YourDbContext context)
+    {
+        _context = context;
+    }
+
+    // Create a booking
+    public async Task CreateBooking(Booking booking)
+    {
+        _context.Bookings.Add(booking);
+        await _context.SaveChangesAsync();
+    }
+
+    // Read all bookings
+    public async Task<List<Booking>> GetAllBookings()
+    {
+        return await _context.Bookings.ToListAsync();
+    }
+
+    // Read a single booking by ID
+    public async Task<Booking> GetBookingById(int id)
+    {
+        return await _context.Bookings.FindAsync(id);
+    }
+
+    // Update a booking
+    public async Task UpdateBooking(Booking booking)
+    {
+        _context.Bookings.Update(booking);
+        await _context.SaveChangesAsync();
+    }
+
+    // Delete a booking
+    public async Task DeleteBooking(int id)
+    {
+        var booking = await _context.Bookings.FindAsync(id);
+        if (booking != null)
+        {
+            _context.Bookings.Remove(booking);
+            await _context.SaveChangesAsync();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.......................
+
+Step 3: Implement the CRUD Operations
+Now, let's create methods for creating, reading, updating, and deleting bookings. Create a new class for managing bookings:
+
+Example BookingService.cs
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
+public class BookingService
+{
+    private readonly YourDbContext _context;
+
+    public BookingService(YourDbContext context)
+    {
+        _context = context;
+    }
+
+    // Create a booking
+    public async Task CreateBooking(Booking booking)
+    {
+        _context.Bookings.Add(booking);
+        await _context.SaveChangesAsync();
+    }
+
+    // Read all bookings
+    public async Task<List<Booking>> GetAllBookings()
+    {
+        return await _context.Bookings.ToListAsync();
+    }
+
+    // Read a single booking by ID
+    public async Task<Booking> GetBookingById(int id)
+    {
+        return await _context.Bookings.FindAsync(id);
+    }
+
+    // Update a booking
+    public async Task UpdateBooking(Booking booking)
+    {
+        _context.Bookings.Update(booking);
+        await _context.SaveChangesAsync();
+    }
+
+    // Delete a booking
+    public async Task DeleteBooking(int id)
+    {
+        var booking = await _context.Bookings.FindAsync(id);
+        if (booking != null)
+        {
+            _context.Bookings.Remove(booking);
+            await _context.SaveChangesAsync();
+        }
+    }
+}
+.................................
+
+Step 4: Use the BookingService in Your Application
+Now that you've implemented the CRUD methods, you can use the BookingService in your application. Here’s an example of how to use it in your Main method or wherever appropriate:
+
+Example Program.cs
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        var serviceProvider = new ServiceCollection()
+            .AddDbContext<YourDbContext>(options =>
+                options.UseSqlServer("your_connection_string_here"))
+            .AddScoped<BookingService>()
+            .BuildServiceProvider();
+
+        var bookingService = serviceProvider.GetService<BookingService>();
+
+        // Example of creating a booking
+        var newBooking = new Booking
+        {
+            UserId = 1, // replace with actual UserId
+            TrainId = 1, // replace with actual TrainId
+            BookingDate = DateTime.Now,
+            SeatsBooked = 2
+        };
+        await bookingService.CreateBooking(newBooking);
+
+        // Example of reading all bookings
+        var bookings = await bookingService.GetAllBookings();
+        foreach (var booking in bookings)
+        {
+            Console.WriteLine($"Booking ID: {booking.BookingId}, Seats: {booking.SeatsBooked}");
+        }
+        
+        // Implement update and delete as needed
+    }
+}
+
+
+...................................
+
+
+for controller
+
+
+
+
+dotnet aspnet-codegenerator controller -name BookingController -m Booking
+-dc OnlineProjectContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+
+
+
+dotnet aspnet-codegenerator controller -name BookingController -m Booking -dc OnlineProjectContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+
+
+
+
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ProjectPracticeContext>(
+   options=>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
+);
+
+
+
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100),
+    Contact NVARCHAR(50),
+    Email NVARCHAR(100) UNIQUE,
+    PasswordHash NVARCHAR(255),
+    Role NVARCHAR(10) -- 'Admin' or 'Doctor'
+);
+
+-- Drugs table
+CREATE TABLE Drugs (
+    DrugId INT PRIMARY KEY IDENTITY,
+    DrugName NVARCHAR(100),
+    DrugDescription NVARCHAR(255),
+    QuantityInStock INT,
+    Price DECIMAL(18, 2),
+    SupplierId INT,
+    FOREIGN KEY (SupplierId) REFERENCES Suppliers(SupplierId)
+);
+
+-- Suppliers table
+CREATE TABLE Suppliers (
+    SupplierId INT PRIMARY KEY IDENTITY,
+    SupplierName NVARCHAR(100),
+    Contact NVARCHAR(50),
+    Email NVARCHAR(100) UNIQUE,
+    Address NVARCHAR(255)
+);
+
+-- Orders table
+CREATE TABLE Orders (
+    OrderId INT PRIMARY KEY IDENTITY,
+    UserId INT,
+    DrugId INT,
+    OrderQuantity INT,
+    OrderStatus NVARCHAR(20) -- 'Pending', 'Verified', 'PickedUp'
+    OrderDate DATETIME,
+    FOREIGN KEY (UserId) REFERENCES Users(UserId),
+    FOREIGN KEY (DrugId) REFERENCES Drugs(DrugId)
+);
+
+-- Sales table
+CREATE TABLE Sales (
+    SaleId INT PRIMARY KEY IDENTITY,
+    DrugId INT,
+    SaleDate DATETIME,
+    QuantitySold INT,
+    TotalAmount DECIMAL(18, 2),
+    FOREIGN KEY (DrugId) REFERENCES Drugs(DrugId)
+);
+
+
+
+
+
+Admin:-
+Add suppliers 
+View all orders
+View sales report
+Add  drugs
+Print report
+Add orders to picked up 
+section 
+Download report 
+Edit/delete drug 
+Verify placed orders
+View drugs
+Edits/delete suppliers 
+
+Doctor
+Place order
+View drugs
+Give database using database first approach 
+
+
+
+
+
+
+
+using AutoMapper;
+using Pharmacy.DTOs;
+using Pharmacy.Models;
+
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pharmacy;
+
+[Route("api/[controller]")]
+[ApiController]
+public class DrugController : ControllerBase
+{
+    private readonly IDrugRepository _drugRepository;
+    private object existingDrug;
+    private object createdDrug;
+
+    public DrugController(IDrugRepository drugRepository)
+    {
+        _drugRepository = drugRepository;
+    }
+
+
+
+
+
+        // POST: api/drug
+        [HttpPost]
+        public async Task<ActionResult<Drug>> AddDrug([FromBody] Drug drug)
+        {
+            if (drug == null)
+            {
+                return BadRequest("Drug data is required.");
+            }
+
+            // Validation for drug (e.g., checking if the drug already exists)
+            
+
+            // Add the drug to the database
+    return CreatedAtAction(nameof(GetDrugById), new { id = drug.Id }, await _drugRepository.AddAsync(drug));
+
+
+
+            // Return the created drug with 201 status code
+            return CreatedAtAction(nameof(GetDrugById), new { id = createdDrug.Id }, createdDrug);
+        }
+
+    private ActionResult<Drug> CreatedAtAction(string v1, object value, object v2)
+    {
+        throw new NotImplementedException();
+    }
+
+    // Get all drugs
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Drug>>> GetAllDrugs()
+    {
+        var drugs = await _drugRepository.GetAllAsync();
+        return Ok(drugs);
+    }
+
+    // Get drug by ID
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Drug>> GetDrugById(int id)
+    {
+        var drug = await _drugRepository.GetByIdAsync(id);
+        if (drug == null)
+        {
+            return NotFound();
+        }
+        return Ok(drug);
+    }
+
+    // Create a new drug
+    [HttpPost]
+    public async Task<ActionResult> AddDrug([FromBody] Drug drug)
+    {
+        await _drugRepository.AddAsync(drug);
+        return CreatedAtAction(nameof(GetDrugById), new { nameof = drug.Name }, drug);
+    }
+
+    // Update an existing drug
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateDrug(int id, [FromBody] Drug drug)
+    {
+        if (id != drug.Id)
+        {
+            return BadRequest();
+        }
+
+        await _drugRepository.UpdateAsync(drug);
+        return NoContent();
+    }
+
+    // Delete a drug
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteDrug(int id)
+    {
+        var drug = await _drugRepository.GetByIdAsync(id);
+        if (drug == null)
+        {
+            return NotFound();
+        }
+
+        await _drugRepository.DeleteAsync(id);
+        return NoContent();
+    }
+}

@@ -1,0 +1,229 @@
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+var summaries = new[]
+{
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+};
+
+app.MapGet("/weatherforecast", () =>
+{
+    var forecast =  Enumerable.Range(1, 5).Select(index =>
+        new WeatherForecast
+        (
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20, 55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        ))
+        .ToArray();
+    return forecast;
+})
+.WithName("GetWeatherForecast")
+.WithOpenApi();
+
+app.Run();
+
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}    
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+
+
+
+using AutoMapper;
+using Pharmacy.DTOs;
+using Pharmacy.Models;
+
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pharmacy;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AdminController : ControllerBase
+{
+    private readonly IRepository<Admin> _adminRepository;
+    private readonly IMapper _mapper;
+
+    public AdminController(IRepository<Admin> adminRepository, IMapper mapper)
+    {
+        _adminRepository = adminRepository;
+        _mapper = mapper;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<AdminDTO>>> GetAll()
+    {
+        var admins = await _adminRepository.GetAllAsync();
+        var adminDTOs = _mapper.Map<IEnumerable<AdminDTO>>(admins);
+        return Ok(adminDTOs);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<AdminDTO>> GetById(int id)
+    {
+        var admin = await _adminRepository.GetByIdAsync(id);
+        if (admin == null) return NotFound();
+        var adminDTO = _mapper.Map<AdminDTO>(admin);
+        return Ok(adminDTO);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Create(AdminDTO adminDTO)
+    {
+        var admin = _mapper.Map<Admin>(adminDTO);
+        await _adminRepository.AddAsync(admin);
+        return CreatedAtAction(nameof(GetById), new { id = admin.Id }, adminDTO);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, AdminDTO adminDTO)
+    {
+        var admin = await _adminRepository.GetByIdAsync(id);
+        if (admin == null) return NotFound();
+        _mapper.Map(adminDTO, admin);
+        await _adminRepository.UpdateAsync(admin);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var admin = await _adminRepository.GetByIdAsync(id);
+        if (admin == null) return NotFound();
+        await _adminRepository.DeleteAsync(id);
+        return NoContent();
+    }
+}
+//////////////////////////////////////////////////
+
+
+
+
+using AutoMapper;
+using Pharmacy.DTOs;
+using Pharmacy.Models;
+
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pharmacy;
+using Microsoft.AspNetCore.Identity;
+
+
+[Route("api/[controller]")]
+[ApiController]
+public class AdminController : ControllerBase
+{
+    private readonly IAdminRepository _adminRepository;
+    private readonly IDrugRepository _drugRepository;
+    private readonly IOrderRepository _orderRepository;
+    private readonly ISupplierRepository _supplierRepository;
+
+    public AdminController(IAdminRepository adminRepository, IDrugRepository drugRepository, IOrderRepository orderRepository, ISupplierRepository supplierRepository)
+    {
+        _adminRepository = adminRepository;
+        _drugRepository = drugRepository;
+        _orderRepository = orderRepository;
+        _supplierRepository = supplierRepository;
+    }
+
+
+    
+    // Get all drugs
+    [HttpGet("drugs")]
+    public async Task<ActionResult<IEnumerable<Drug>>> GetAllDrugs()
+    {
+        var drugs = await _drugRepository.GetAllAsync();
+        return Ok(drugs);
+    }
+
+    // Verify order
+    [HttpPost("orders/{id}/verify")]
+    public async Task<ActionResult> VerifyOrder(int id)
+    {
+        var order = await _orderRepository.GetByIdAsync(id);
+        if (order == null)
+        {
+            return NotFound();
+        }
+
+        order.Status = "Verified"; // Example of updating the status
+        await _orderRepository.UpdateAsync(order);
+        return Ok(order);
+    }
+
+    // Get all orders
+    [HttpGet("orders")]
+    public async Task<ActionResult<IEnumerable<Order>>> GetAllOrders()
+    {
+        var orders = await _orderRepository.GetAllAsync();
+        return Ok(orders);
+    }
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+using AutoMapper;
+using Pharmacy.DTOs;
+using Pharmacy.Models;
+
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Pharmacy;
+
+[Route("api/[controller]")]
+[ApiController]
+public class DoctorController : ControllerBase
+{
+    private readonly IDoctorRepository _doctorRepository;
+
+    public DoctorController(IDoctorRepository doctorRepository)
+    {
+        _doctorRepository = doctorRepository;
+    }
+
+    public object GetOrderById { get; private set; }
+
+    // Get all drugs (Doctor's access)
+    [HttpGet("drugs")]
+    public async Task<ActionResult<IEnumerable<Drug>>> GetAllDrugs()
+    {
+        var drugs = await _doctorRepository.GetAllDrugsAsync();
+        return Ok(drugs);
+    }
+
+    // Place an order
+    [HttpPost("orders")]
+    public async Task<ActionResult> PlaceOrder([FromBody] Order order)
+    {
+        await _doctorRepository.PlaceOrderAsync(order);
+        return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
+    }
+
+    
+}
+

@@ -1,0 +1,592 @@
+Topic	Duration
+C# Programming	10
+SQL Server	4
+Git & Github	3
+Automated Testing with MSTest and Async Programming in .Net	1
+ADO.NET and LINQ and Entity Framework	4
+ASP .Net MVC5 Fundamentals	4
+ASP .Net Core Fundamentals	3
+ASP.Net Core with Entity Framework	3
+Building an API with .Net Core	2
+ASP.Net Core Authentication	1
+HTML CSS JavaScript	4
+ES6 & TypeScript	2
+Angular (Optional with React)	6
+Case Study	14
+
+
+
+
+QUESTIONS:-
+C# Program to Check Whether a Given Number is Even or Odd
+C# Program to Print Odd Numbers in a Given Range
+C# Program to Check Whether a Number is Positive or Not
+C# Program to Find the Largest of Two Numbers
+C# Program to Swap Two Numbers
+C# Program to Check if a Number is Divisible by 2
+C# Program to Find the Sum of All the Multiples of 3 and 5
+C# Program to Find Sum of Digits of a Number
+C# Program to Reverse a Number
+C# Program to Reverse a Number and Check if it is a Palindrome
+C# Program to Find the Sum of Two Binary Numbers
+C# Program to Multiply Two Binary Numbers
+C# Program to Calculate the Sum, Multiplication, Division and Subtraction of Two Numbers(use switch case)
+ 
+C# Program to Generate Fibonacci Series
+C# Program to Print the Factorial of a Given Number
+C# Program to Print All the Prime Numbers between 1 to 100
+C# Program to Find the Largest Prime Factor of a Number
+C# Program to Check Whether a Given Number is Perfect Number
+C# Program to Check Armstrong Number
+C# Program to Print Armstrong Number between 1 to 1000
+C# Program to Generate the Sum of N Numbers
+C# Program to Find the Sum of First 50 Natural Numbers using For Loop
+
+
+
+Introduction to C#
+Features of C#
+C# Compilation and Execution
+General Structure of a C# Program
+Data Types and Arrays in C#
+Data Types in C#
+Value Types and Reference Types
+Boxing and UnBoxing
+Single Dimensional, Multi-Dimensional & Jagged arrays
+Nullable Types
+Implicitly Typed Local variables
+Var vs dynamic
+Is and as operator
+Ref vs out keywords
+The ‘object’ base class in .net
+Equals() vs ==
+String vs StringBuilder
+Various String class methods
+Default parameters, named parameters
+Parse() vs TryParse() vs Convert Class methods
+ 
+ 
+OOP with C#
+Structures and enums
+The architecture of a class in C#
+Instance, Class & Reference variables
+Access Modifier
+Abstract Classes
+Constructors, Destructors, The GC
+.NET Base class library
+Inheritance in C#
+Method Overloading
+Method Overriding
+Operator Overloading
+Method Hiding
+Access modifiers : private, pubic, protected, internal, protected internal, new
+Anonymous types
+Abstract classes
+Sealed classes
+Creating Interfaces
+Implementing Interface inheritance
+Declaring properties within Interfaces
+Namespaces
+Creating and using Generic classes
+Indexers & Properties
+Auto Implemented properties
+Static Classes
+Property Accessors
+Partial types
+Extension methods
+Object Initializer
+Evaluating Regular Expressions in C#
+RegEx Class
+Forming Regular Expression
+Methods for Regular Expression
+Exception Handling
+Exceptions in C#
+Exception class hierarchy
+Try block
+Multiple catch blocks
+Finally block
+Purpose of throw keyword
+Purpose of inner exception
+Creating Custom Exception
+Garbage Collection in C#
+Role of a Garbage Collector
+Garbage Collection Algorithm
+Finalize vs Dispose
+Collections & Generics
+System.Collections Namespace
+Collection Interfaces
+Collection Classes
+The collection API
+Working with Generics
+Creating Generic class, Generic Methods, Interfaces, Delegates
+Collection Initializers
+Iterators
+Constraints
+
+
+
+Software
+	
+Links
+
+
+ 
+	
+ 
+
+
+Visual Studio 2022
+	
+https://visualstudio.microsoft.com/downloads/
+
+
+SQL Server
+	
+ 
+ SQLServer2016.zip
+
+
+Postman
+	
+https://www.postman.com/downloads/
+
+
+Node.js(for angular)
+	
+https://nodejs.org/en/download/
+
+
+Git Bash
+	
+https://git-scm.com/download/win
+
+
+Visual Studio Code
+	
+https://code.visualstudio.com/download
+ 
+Visual Studio Code is free to download from Microsoft website (Download Visual Studio Code - Mac, Linux, Windows) and does not require any admin rights to install
+And Node.js has to be installed via pre-approved catalogue (Windows Start Menu >> Search for Company portal >> pre -approved catalogue >> click on install >> search for node.js>> click on install)
+please Raise a request from service central in order to install licensesed softwares marked in red : Software License Queries - ServiceCentral (capgemini.com)
+Download Visual Studio Tools - Install Free for Windows, Mac, Linux
+Download Visual Studio IDE or VS Code for free. Try out Visual Studio Professional or Enterprise editions on Windows, Mac.
+Download Visual Studio Tools - Install Free for Windows, Mac, Linux
+Download Visual Studio IDE or VS Code for free. Try out Visual Studio Professional or Enterprise editions on Windows, Mac.
+
+
+
+
+
+Anonymous Types, Delegates, Events & Lambda
+Extension Methods
+Anonymous Type
+Var and Dynamic
+Introduction to Delegates
+Events in C#
+Anonymous Methods
+Lambda Expression
+Expression Tree
+File I/O and Serialization
+Using StreamReader, StreamWritter
+Using BinaryReader, BinaryWriter
+Using File, FileInfo, Directory, DirectoryInfo
+Serialization modes: Binary, SOAP, XML
+JSON serialization
+Threading, Parallel and Async programming with C#
+Task Parallel Library
+Threads Vs. Tasks
+Task Based Asynchronous Model
+Async and Await
+Using Locks
+New Features in C# 8.0
+ 
+Readonly members
+Default interface methods
+Pattern matching enhancements:
+Using declarations
+Static local functions
+Disposable ref structs
+Nullable reference types
+Asynchronous streams
+Asynchronous disposable
+Indices and ranges
+Null-coalescing assignment
+Unmanaged constructed types
+Stackalloc in nested expressions
+Enhancement of interpolated verbatim strings
+ 
+Dependency Injection
+ 
+SOLID principles
+ 
+
+
+
+SQL:-
+
+
+ 
+Introduction to RDBMS
+Introduction to databases
+Data Models in Database
+Properties of RDBMS
+Normalization
+CODD’s Relational Database Rules
+Data Integrity
+T-SQL Language
+Introduction to SQL Server
+What is SQL Server?
+SQL Server Components
+SQL Server Authentication Modes
+SQL Server Services
+SQL Server Version History
+SQL Server Editions
+Working with Data Types, Tables & Data Integrity covering DDL, DML, DCL statements
+Working with Data Types (Only Basics of Data Types)
+Working with Schema
+Working with Tables
+Implementing Data Integrity
+Beginning with Transact-SQL
+Transact-SQL
+System Functions
+Advanced T-SQL Queries`
+Advanced T-SQL Statements
+Other T-SQL Statements
+Set Operators
+Transact-SQL
+System Functions
+Advanced T-SQL Queries
+Advanced T-SQL Statements
+Other T-SQL Statements
+Working with Joins and Subqueries
+What are Joins?
+Types of joins
+Subqueries
+Database Objects: Indexes and Views
+Introduction to Index in SQL Server
+Introduction to Views in SQL Server
+Stored Procedures
+Stored Procedure
+Implementing Stored Procedure
+Exception handling using TRY-CATCH
+Implementing Triggers (Only Introduction)
+Introduction to Triggers
+Defining Triggers
+Transactions
+Introduction to Transactions
+ 
+Functions
+ 
+cursor
+ 
+Stored procedure with input and output parameter
+ 
+temp table
+ 
+subqueries
+Constraints
+ 
+All datatypes
+ 
+
+
+
+ADO DOTNET:-\
+ADO.NET Architecture
+.NET Data Providers
+DB Connectivity Architectures in .NET
+Elements of .NET Data Providers
+Introduction to SQL Server
+Namespaces in ADO.NET
+Using server explorer window
+Connection class
+Command class
+Direct Command execution against database
+Using Parameters in command
+Performing CRUD operations
+Connected Vs disconnected Architecture
+Data reader class
+The dataset and dataset Architecture
+Comparison ADO & ADO.NET on Disconnected Data architecture
+Implementing Disconnected Data Architecture
+Performing CRUD operations in disconnected architecture
+ReadXml(),ReadXmlSchema(), WriteXml(), WriteXmlSchema() usage.
+ 
+LINQ and Entity Framework Core
+ 
+ 
+ 
+Table of contents
+Language Integrated Query
+Introduction , LINQ Syntax
+Query Operators
+Select, from, Where
+ofType
+OrderBy
+ThenBy
+GroupBy, into
+Select
+SelectMany
+Take, TakeWhile
+First
+FirstOrDefault
+Single
+SingleOrDefault
+Aggregate functions Sum, Min, Max, Average, Count
+Distinct
+Intersect
+Except
+Join
+LINQ projection
+Deferred execution vs immediate execution
+Let keyword
+LINQ to Object
+LINQ to DataTable
+System. L1NQ.Queryable
+ 
+Entity Framework Core
+Overview of ORM Products
+Entity Framework introduction
+Using Database first Approach
+Using Code First approach
+Implementing Repository Pattern
+Introduction & Benefits
+Repository Pattern implementation
+Setting up Entities in EFCore
+Using LINQ to Entities to perform CRUD operations
+SQL Query Logging
+Migration & Database Update
+Eager Loading Vs Explicit Loading Vs Lazy Loading
+Raw SQL And Stored Procedures 
+
+
+
+NEW TOPIC:-
+
+
+• Fundamentals of  ASP.NET MVC
+
+o ASP.NET MVC Framework
+
+o ASP.NET vs. ASP.NET MVC
+
+o ASP.NET MVC Model
+
+• Exploring Controllers
+
+o Working with Controllers
+
+o Routing
+
+o Attribute Routing
+
+o Action Methods
+
+o Action Filters ,Types of Action Filters
+
+o Passing Data from controller to view
+
+• Working with Views
+
+o ASP.NET MVC Razor View Engines
+
+o HTML Helpers
+
+o Working with Layout
+
+• Exploring Models & working with data
+
+o Model Binding
+
+o Data Annotation
+
+• Entity Framework 6 Features with Asp. Net Scaffolding
+
+o Code First Model
+
+o Multiple Migrations
+
+o Scaffolding
+
+• Web Optimization with ASP.NET MVC
+
+o Web Optimization
+
+o Bundling & Minification
+
+o Configuring bundles
+
+• Using ASP.NET Identity in ASP.NET MVC
+
+o What is ASP.NET Identity?
+
+o Features of ASP.NET Identity
+
+o Claim Based Authentication
+
+o External Authentication
+
+
+ASP.NET Web API
+Program Duration: 3 Days.
+Table of contents
+
+• Introduction to ASP.NET Web API
+
+o Web API features
+
+o SOAP- based WebServices
+
+o HTTP Web Services
+
+o Web API Introduction
+
+o Web API Routing
+
+o Web API Parameter Biding
+
+o Content Negotiation
+
+o Working with swagger and Postman Utility
+ASP.NET Core | Open-source web framework for .NET
+Build web apps and services that run on Windows, Linux, and macOS using C#, HTML, CSS, and JavaScript. Get started for free on Windows, Linux, or macOS.
+ 
+https://www.javatpoint.com/asp-net-mvc
+ASP.Net MVC Tutorial - javatpoint
+ASP.Net MVC Tutorial with asp.net tutorial, asp.net introduction, features, project, example, server controls, labels, textbox, button, hyperlink, radiobutton, calender, checkbox, fileupload, event...
+ 
+https://www.youtube.com/watch?v=jhj9ouy7x1g
+ASP.NET MVC Project - Full AS…
+181.6K views · one year ago
+ 
+ASP.Net MVC Tutorial - javatpoint
+ASP.Net MVC Tutorial with asp.net tutorial, asp.net introduction, features, project, example, server controls, labels, textbox, button, hyperlink, radiobutton, calender, checkbox, fileupload, event...
+ 
+
+
+NEW:-\
+
+
+
+ASP.NET Core Introduction
+.NET Core Theory
+Introduction to ASP.NET Core
+Setting ASP.NET Core Development Environment
+Setup and Project Overview
+Creating an ASP.NET Core Project
+Project File and Program File
+Startup Class and Service
+Startup File, .Net Core Pipeline and Middleware
+Routing in MVC and Endpoints
+Launchsettings AppSettings and WWWRoot
+Static Content
+Shared Folder as well as ViewImports and ViewStart
+Dependency Injection
+Understanding DI
+Dependency Chains & Dependency Methods
+Controllers and Routing
+Introduction to Controller
+Creating Controller
+Introduction to Routing
+Transfer Data
+Conventional Routing
+Attribute Based Routing
+URL Routing
+Endpoint Routing
+Areas
+Controller Actions
+Passing Values to Actions
+Action Return Types
+Model, Database and CRUD
+Introduction to Model
+Creating Our First Model
+Code First Approach
+Setting Up Connectionstring
+Setting up DbContext as well as EntityFrameWork
+Setting Up the DB Context in Our Startup File
+Passing Data to The Controller
+Server Side Validation and Client Side Validation
+ViewBag, ViewData and ViewModel
+Viewbag and Passing Data From A Controller To A View
+ViewBag And ViewData
+ViewModels and Strongly Typed Views
+ViewModels in Action
+Add Styling and JS
+Layout
+Helper Class
+View Component
+Filters
+Introduction to Filters
+Filter Types
+Advanced Features
+Session in .NET Core
+TempData
+Authentication in .NET Core & Implementing Authentication Identity
+Authorization in .NET Core
+Web Sockets
+Deployment modes of .NET core Application
+ 
+ASP.NET Core Web API
+Program Duration: 3 Days.
+ 
+Table of contents
+Introduction to .Net Core WebAPI
+Introduction to Web Service
+Introduction to REST API
+Introduction to Web API
+Difference between SOAP Web Service, WCF Service and Web API
+HTTPS Verbs
+Web API Routing
+Configuring WebApi
+Testing the Web API Project with Postman and Swagger
+Building first ASP.NET Core Web API
+Fluent Validation
+Working with Relational Data using Entity Framework Core
+Relationships in EF Core
+HTTP Response Status Codes
+Try-Catch-Finally block
+Throwing custom exceptions
+Global error handling
+Custom global error handling
+DML Manipulation using Repository Pattern
+Controller Action Return Types
+Introduction to Controller Action Return Types
+Specific Type
+IActionResult
+ActionResult<Type>
+Custom Return Type
+Web API Versioning
+Web API Logging
+Unit Testing in Web API
+
+
+
+
+
+COMMANDS:-
+dotnet add package Microsoft.EntityFrameworkCore
+ 
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+ 
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+ 
+
+SCAFOLD:-
+dotnet ef dbcontext scaffold "Data Source=LIN-PF1DNQFN; Initial Catalog=ProductDB;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -o Models
+his is imp for Database first aproach
+
+
+
+CONTROLLER:-
+dotnet aspnet-codegenerator controller -name ProductsController -m ProductList 
+-dc ProductDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+
+
+ 
+
+
+
+
